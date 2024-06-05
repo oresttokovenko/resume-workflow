@@ -1,6 +1,6 @@
 # Resume Workflow Tool
 
-The Typst Resume Workflow tool automates the creation of customized resume directories and files for specific job applications, allowing users to quickly generate and organize their application materials. It leverages Typst for resume generation. It is also recommended to use a `conf.typ` file in the root for consistent formatting, importing it with `#import "../../conf.typ": *`
+The Typst Resume Workflow tool automates the creation of customized resume directories and files for specific job applications, allowing users to quickly generate and organize their application materials. It leverages Typst for resume generation, creates a `job_description.txt` file to track job descriptions, and gracefully handles existing directories. It is also recommended to use a `conf.typ` file in the root for consistent formatting, importing it with `#import "../../conf.typ": *`
 
 ## For Use
 
