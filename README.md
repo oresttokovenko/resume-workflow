@@ -1,6 +1,6 @@
 # Resume Workflow Tool
 
-#### Please note: This tool focuses on Typst - if you wish to use it for LaTeX please fork and edit as you wish
+The Typst Resume Workflow tool automates the creation of customized resume directories and files for specific job applications, allowing users to quickly generate and organize their application materials. It leverages Typst for resume generation. It is also recommended to use a `conf.typ` file in the root for consistent formatting, importing it with `#import "../../conf.typ": *`
 
 ## For Use
 
@@ -19,6 +19,8 @@
    ```sh
    resume_workflow -c facebook -j "software engineer"
    ```
+
+4. **Edit and compile your `.typ` file to generate a resume**
 
 ## For Contributors
 
