@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resume_workflow"
+description = "A resume workflow tool"
+authors = [{ name = "Orest Tokovenko", email = "hi@oresttokovenko.com" }]
+version = "0.0.1"
+requires-python = ">=3.11, <3.12"
+dependencies = [
+    "click>=8.1.7, <8.2"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.4.7, <0.5"
+]
+
+[tool.ruff]
+target-version = 'py311'
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+extend-select = ["I"]
+
+[project.scripts]
+resume-workflow = "resume_workflow:__main__.cli"
