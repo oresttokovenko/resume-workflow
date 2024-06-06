@@ -12,7 +12,7 @@ The Resume Workflow tool automates the creation of customized resume directories
 
 2. **Install the Resume Workflow tool:**
    ```sh
-   pipx install git+https://github.com/oresttokovenko/typst-resume-workflow.git --python 3.11
+   pipx install git+https://github.com/oresttokovenko/resume-workflow.git --python 3.11
    ```
 
 3. **Run the tool from anywhere on your machine, no virtual environment required:**
