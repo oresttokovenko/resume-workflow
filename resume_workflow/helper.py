@@ -10,7 +10,7 @@ TEMPLATE_DIR: Path = Path("_template")
 def create_dir_and_files(
     company_name: str, job_title: str, use_template: bool = True
 ) -> None:
-    job_title_str = job_title.replace(" ", "_").replace(",", "_").replace("__", "_")
+    job_title_str = job_title.lower().replace(" ", "_").replace(",", "_").replace("__", "_")
 
     root = Path(".")
     template_dir_path = root / TEMPLATE_DIR
