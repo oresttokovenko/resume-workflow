@@ -17,7 +17,7 @@ The Resume Workflow tool automates the creation of customized resume directories
 
 3. **Run the tool from anywhere on your machine, no virtual environment required:**
    ```sh
-   resume_workflow -c Facebook -j "software engineer"
+   resume-workflow -c Facebook -j "software engineer"
    ```
 
 ### Using the `-t/-T` Flag and the `_template` Folder
@@ -26,11 +26,11 @@ The `resume_workflow` tool includes an optional `-t/-T` flag to specify whether 
 
 - To use the template folder (default behavior):
    ```sh
-   resume_workflow -c Facebook -j "software engineer" -t
+   resume-workflow -c Facebook -j "software engineer" -t
    ```
 - To run without using the template folder:
    ```sh
-   resume_workflow -c Facebook -j "software engineer" -T
+   resume-workflow -c Facebook -j "software engineer" -T
    ```
 
 If the `_template` folder is empty or not present, the tool will still function as expected, creating the necessary directories and files for your resume workflow.
