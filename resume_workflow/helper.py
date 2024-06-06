@@ -3,18 +3,21 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
+JOB_DESCRIPTION_FILE: str = "job_description.txt"
+TEMPLATE_DIR: Path = Path("_template")
 
-def create_dir_and_files(company_name: str, job_title: str | tuple) -> None:
 
+def create_dir_and_files(
+    company_name: str, job_title: str, use_template: bool = True
+) -> None:
     job_title_str = job_title.replace(" ", "_").replace(",", "_").replace("__", "_")
 
+    root = Path(".")
+    template_dir_path = root / TEMPLATE_DIR
     company_name_dir = Path(company_name)
     job_dir = company_name / Path(job_title_str)
 
-    resume_file_main = Path("main.typ")
-    job_description = Path("job_description.txt")
-
-    resume_dir = job_dir / resume_file_main
+    job_description = Path(JOB_DESCRIPTION_FILE)
     job_description_dir = job_dir / job_description
 
     try:
@@ -26,22 +29,38 @@ def create_dir_and_files(company_name: str, job_title: str | tuple) -> None:
         job_dir.mkdir(exist_ok=False)
         logger.info(f"creating {job_dir.name} folder")
 
-        # create files
-        resume_dir.touch(exist_ok=False)
+        # create job requirements file
         job_description_dir.touch(exist_ok=False)
-        logger.info(f"creating resume files")
+
+        # if using template, copy files in _template
+        if use_template and TEMPLATE_DIR.exists():
+            template_files = [
+                job_dir / Path(x.name) for x in template_dir_path.iterdir()
+            ]
+            for file in template_files:
+                file.touch(exist_ok=False)
+                logger.info(f"copying {file}")
 
     except FileExistsError:
-        logger.info(f"The {company_name_dir.name} folder already exists, attempting to create resume inside of it")
+        logger.info(
+            f"The {company_name_dir.name} folder already exists, attempting to create resume inside of it"
+        )
         try:
             # create job dir
             job_dir.mkdir(exist_ok=False)
             logger.info(f"creating {job_dir.name} folder")
 
-            # create files
-            resume_dir.touch(exist_ok=False)
+            # create job requirements file
             job_description_dir.touch(exist_ok=False)
-            logger.info(f"creating resume files")
+
+            # if using template, copy files in _template
+            if use_template and TEMPLATE_DIR.exists():
+                template_files = [
+                    job_dir / Path(x.name) for x in template_dir_path.iterdir()
+                ]
+                for file in template_files:
+                    file.touch(exist_ok=False)
+                    logger.info(f"copying {file}")
 
         except FileExistsError:
             logger.info(

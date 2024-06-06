@@ -1,6 +1,6 @@
 # Resume Workflow Tool
 
-The Typst Resume Workflow tool automates the creation of customized resume directories and files for specific job applications, allowing users to quickly generate and organize their application materials. It leverages Typst for resume generation, creates a `job_description.txt` file to track job descriptions, and gracefully handles existing directories. It is also recommended to use a `conf.typ` file in the root for consistent formatting, importing it with `#import "../../conf.typ": *`
+The Resume Workflow tool automates the creation of customized resume directories and files for specific job applications, and gracefully handles existing directories. At a minimum, this tool creates a `job_description.txt` file, but has the capacity for much more. The _template folder can be used to include additional template files, and it can either be empty or contain files to be copied over during the resume generation process.
 
 ## For Use
 
@@ -17,10 +17,24 @@ The Typst Resume Workflow tool automates the creation of customized resume direc
 
 3. **Run the tool from anywhere on your machine, no virtual environment required:**
    ```sh
-   resume_workflow -c facebook -j "software engineer"
+   resume_workflow -c Facebook -j "software engineer"
    ```
 
-4. **Edit and compile your `.typ` file to generate a resume**
+### Using the `-t/-T` Flag and the `_template` Folder
+
+The `resume_workflow` tool includes an optional `-t/-T` flag to specify whether to use the `_template` folder. If the `_template` folder is present and contains files, those files will be copied over to the new job directory. 
+
+- To use the template folder (default behavior):
+   ```sh
+   resume_workflow -c Facebook -j "software engineer" -t
+   ```
+- To run without using the template folder:
+   ```sh
+   resume_workflow -c Facebook -j "software engineer" -T
+   ```
+
+If the `_template` folder is empty or not present, the tool will still function as expected, creating the necessary directories and files for your resume workflow.
+
 
 ## For Contributors
 

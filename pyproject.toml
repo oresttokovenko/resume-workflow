@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "resume_workflow"
-description = "A resume workflow tool"
+description = "A tool agnostic resume workflow cli"
 authors = [{ name = "Orest Tokovenko", email = "hi@oresttokovenko.com" }]
-version = "0.0.1"
+version = "0.0.2"
 requires-python = ">=3.11, <3.12"
 dependencies = [
     "click>=8.1.7, <8.2"
