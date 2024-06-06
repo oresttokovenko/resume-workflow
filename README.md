@@ -51,7 +51,5 @@ If the `_template` folder is empty or not present, the tool will still function 
 
 3. **Run the Tool from Within the Virtual Environment:**
    ```sh
-   resume_workflow -c facebook -j "software engineer"
+   resume-workflow -c facebook -j "software engineer"
    ```
-
-Make sure to replace `"facebook"` and `"software engineer"` with the desired company name and job title respectively.
