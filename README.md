@@ -1,6 +1,6 @@
-# Resume Workflow Tool
+# Resume Workflow CLI
 
-The Resume Workflow tool automates the creation of customized resume directories and files for specific job applications, and gracefully handles existing directories. At a minimum, this tool creates a `job_description.txt` file within the generated directories, but has the capacity for much more. The `_template` folder can be used to include additional template files, and it can either be empty or contain files to be copied over during the resume generation process.
+The Resume Workflow CLI automates the creation of customized resume directories and files for specific job applications, and gracefully handles existing directories. At a minimum, this tool creates a `job_description.txt` file within the generated directories, but has the capacity for much more. The `_template` folder can be used to include additional template files, and it can either be empty or contain files to be copied over during the resume generation process.
 
 ## For Use
 

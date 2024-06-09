@@ -3,39 +3,47 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "resume_workflow"
-description = "A tool agnostic resume workflow cli"
-authors = [{ name = "Orest Tokovenko", email = "hi@oresttokovenko.com" }]
+name = "resume-workflow"
 version = "0.0.2"
-requires-python = ">=3.11, <3.12"
+description = "A tool agnostic resume workflow cli"
+authors = [ { name = "Orest Tokovenko", email = "hi@oresttokovenko.com" } ]
+requires-python = ">=3.11,<3.12"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+]
 dependencies = [
-    "click>=8.1.7, <8.2"
+    "click>=8.1.7,<8.2",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "ruff>=0.4.7, <0.5"
+optional-dependencies.dev = [
+    "ruff>=0.4.7,<0.5",
 ]
+
+[project.scripts]
+resume-workflow = "resume_workflow:__main__.cli"
 
 [tool.ruff]
-target-version = 'py311'
+target-version = "py311"
 
-[tool.ruff.lint]
-select = [
+lint.select = [
+    # flake8-bugbear
+    "B",
     # pycodestyle
     "E",
     # Pyflakes
     "F",
-    # pyupgrade
-    "UP",
-    # flake8-bugbear
-    "B",
-    # flake8-simplify
-    "SIM",
     # isort
     "I",
+    # flake8-simplify
+    "SIM",
+    # pyupgrade
+    "UP",
 ]
-extend-select = ["I"]
+lint.extend-select = [
+    "I",
+]
 
-[project.scripts]
-resume-workflow = "resume_workflow:__main__.cli"
+[tool.pyproject-fmt]
+column_width = 120
+indent = 4
