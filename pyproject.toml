@@ -2,6 +2,9 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+packages = ["resume_workflow"]
+
 [project]
 name = "resume-workflow"
 version = "0.0.4"
