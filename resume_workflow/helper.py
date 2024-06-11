@@ -1,4 +1,6 @@
 import logging
+import shutil
+
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -35,11 +37,11 @@ def create_dir_and_files(
         # if using template, copy files in _template
         if use_template and TEMPLATE_DIR.exists():
             template_files = [
-                job_dir / Path(x.name) for x in template_dir_path.iterdir()
+                x.name for x in template_dir_path.iterdir()
             ]
             for file in template_files:
-                file.touch(exist_ok=False)
-                logger.info(f"copying {file}")
+                shutil.copy( TEMPLATE_DIR / file, job_dir / file)
+                logger.info(f"copying {file} from template directory")
 
     except FileExistsError:
         logger.info(
@@ -56,11 +58,11 @@ def create_dir_and_files(
             # if using template, copy files in _template
             if use_template and TEMPLATE_DIR.exists():
                 template_files = [
-                    job_dir / Path(x.name) for x in template_dir_path.iterdir()
+                    x.name for x in template_dir_path.iterdir()
                 ]
                 for file in template_files:
-                    file.touch(exist_ok=False)
-                    logger.info(f"copying {file}")
+                    shutil.copy( TEMPLATE_DIR / file, job_dir / file)
+                    logger.info(f"copying {file} from template directory")
 
         except FileExistsError:
             logger.info(
