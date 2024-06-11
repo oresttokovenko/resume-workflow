@@ -1,6 +1,5 @@
 import logging
 import shutil
-
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -12,7 +11,9 @@ TEMPLATE_DIR: Path = Path("_template")
 def create_dir_and_files(
     company_name: str, job_title: str, use_template: bool = True
 ) -> None:
-    job_title_str = job_title.lower().replace(" ", "_").replace(",", "_").replace("__", "_")
+    job_title_str = (
+        job_title.lower().replace(" ", "_").replace(",", "_").replace("__", "_")
+    )
 
     root = Path(".")
     template_dir_path = root / TEMPLATE_DIR
@@ -36,11 +37,9 @@ def create_dir_and_files(
 
         # if using template, copy files in _template
         if use_template and TEMPLATE_DIR.exists():
-            template_files = [
-                x.name for x in template_dir_path.iterdir()
-            ]
+            template_files = [x.name for x in template_dir_path.iterdir()]
             for file in template_files:
-                shutil.copy( TEMPLATE_DIR / file, job_dir / file)
+                shutil.copy(TEMPLATE_DIR / file, job_dir / file)
                 logger.info(f"copying {file} from template directory")
 
     except FileExistsError:
@@ -57,11 +56,9 @@ def create_dir_and_files(
 
             # if using template, copy files in _template
             if use_template and TEMPLATE_DIR.exists():
-                template_files = [
-                    x.name for x in template_dir_path.iterdir()
-                ]
+                template_files = [x.name for x in template_dir_path.iterdir()]
                 for file in template_files:
-                    shutil.copy( TEMPLATE_DIR / file, job_dir / file)
+                    shutil.copy(TEMPLATE_DIR / file, job_dir / file)
                     logger.info(f"copying {file} from template directory")
 
         except FileExistsError:
