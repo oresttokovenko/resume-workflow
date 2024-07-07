@@ -1,11 +1,6 @@
 # Resume Workflow CLI
 
-The Resume Workflow CLI tool automates the tedious parts of creating folders for each company you intend on applying to and copying over template files. This tool, as a best practice, creates a `job_description.txt` file within the generated directories but offers the capability for more customization. The `_template` folder can be used to include additional template files, which can either be empty or contain files to be copied over during the resume generation process.
-
-## Benefits
-- **Time-Saving:** Automates the creation of directory structures and copying of template files, reducing manual effort.
-- **Consistency:** Ensures a standardized structure and format for each job application, as well as gracefully handles existing directories
-- **Flexibility:** Allows for customization through the `_template` folder, making it adaptable to different application requirements (Word, LaTex, Typst, etc)
+Are you tired of the tedious task of tailoring each resume for every job application? Well you still have to do that, but the Resume Workflow CLI tool is here to help make it easier! This tool automates the creation of folders for each company you apply to and copies over template files (if you have a resume template which you prefer to use), allowing you to save time and stay organized. As a best practice, it creates a `job_description.txt` file within the generated directories but also offers customization capabilities. The `_template` folder can be customized with additional template files to be copied during the resume generation process, since you probably have a base resume that you want to start with. Focus on what matters most - the content of your resume, not copy and pasting.
 
 Here is an example of basic structure using LaTeX and leveraging the `_template` option
 
@@ -26,6 +21,11 @@ Facebook
     ├── job_description.txt
     └── main.tex
 ```
+
+## Benefits
+- **Time-Saving:** Automates the creation of directory structures and copying of template files, reducing manual effort.
+- **Consistency:** Ensures a standardized structure and format for each job application, as well as gracefully handles existing directories
+- **Flexibility:** Allows for template customization through the `_template` folder, making it adaptable to different application requirements (Word, LaTeX, Typst, etc)
 
 ## For Use
 
@@ -71,10 +71,18 @@ If the `_template` folder is empty or not present, the tool will still function 
 
 2. **Install the Tool in Editable Mode:**
    ```sh
-   pip install --editable .
+   pip install --editable '.[dev]'
    ```
 
 3. **Run the Tool from Within the Virtual Environment:**
    ```sh
    resume-workflow -c facebook -j "software engineer"
+   ```
+
+## Roadmap
+
+- Allow users to use different base resumes for various types of job applications by defining multiple template folders 
+
+   ```sh
+   resume-workflow -c Apple -j "platform engineer" -t _infra_engineer
    ```

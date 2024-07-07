@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 optional-dependencies.dev = [
-    "ruff>=0.4.7,<0.5",
+    "ruff>=0.5.0,<0.6",
 ]
 
 [project.scripts]
