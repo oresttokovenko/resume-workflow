@@ -1,11 +1,11 @@
 # Resume Workflow CLI
 
-The Resume Workflow CLI tool automates the tedious parts of creating folders for each company you intend on applying to, copying over template files, and gracefully handling existing directories. This tool, as a best practice, creates a `job_description.txt` file within the generated directories but offers the capability for more customization. The `_template` folder can be used to include additional template files, which can either be empty or contain files to be copied over during the resume generation process.
+The Resume Workflow CLI tool automates the tedious parts of creating folders for each company you intend on applying to and copying over template files. This tool, as a best practice, creates a `job_description.txt` file within the generated directories but offers the capability for more customization. The `_template` folder can be used to include additional template files, which can either be empty or contain files to be copied over during the resume generation process.
 
 ## Benefits
 - **Time-Saving:** Automates the creation of directory structures and copying of template files, reducing manual effort.
-- **Consistency:** Ensures a standardized structure and format for each job application.
-- **Flexibility:** Allows for customization through the `_template` folder, making it adaptable to different application requirements.
+- **Consistency:** Ensures a standardized structure and format for each job application, as well as gracefully handles existing directories
+- **Flexibility:** Allows for customization through the `_template` folder, making it adaptable to different application requirements (Word, LaTex, Typst, etc)
 
 Here is an example of basic structure using LaTeX and leveraging the `_template` option
 
