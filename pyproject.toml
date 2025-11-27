@@ -1,13 +1,14 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.9.13,<0.10"]
+build-backend = "uv_build"
 
-[tool.setuptools]
-packages = ["resume_workflow"]
+[tool.uv.build-backend]
+module-name = "resume_workflow"
+module-root = ""
 
 [project]
 name = "resume-workflow"
-version = "0.1.0"
+version = "0.1.1"
 description = "A tool agnostic resume workflow cli"
 authors = [ { name = "Orest Tokovenko", email = "hi@oresttokovenko.com" } ]
 requires-python = ">=3.11,<3.12"
@@ -16,21 +17,24 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-    "click>=8.1.7,<8.2",
+    "click<8.2,>=8.1.7",
 ]
 
-optional-dependencies.dev = [
-    "ruff>=0.5.0,<0.6",
+[dependency-groups]
+dev = [
+    "pyrefly>=0.43.1",
+    "ruff>=0.14.6,<0.15",
 ]
 
 [project.scripts]
-resume-workflow = "resume_workflow:__main__.cli"
+resume-workflow = "resume_workflow:main.cli"
 
 [tool.ruff]
 target-version = "py311"
 line-length = 110
 
-lint.select = [
+[tool.ruff.lint]
+select = [
     # flake8-bugbear
     "B",
     # pycodestyle
@@ -44,10 +48,22 @@ lint.select = [
     # pyupgrade
     "UP",
 ]
-lint.extend-select = [
+fixable = ["ALL"]
+extend-select = [
     "I",
 ]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
 
 [tool.pyproject-fmt]
 column_width = 120
 indent = 4
+
+[tool.pyrefly]
+search_path = ["resume_workflow"]
+exclude_paths = ["tests"]
+python_version = "3.11"
+
+

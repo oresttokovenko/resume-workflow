@@ -29,15 +29,14 @@ Facebook
 
 ## For Use
 
-1. **Install `pipx`:**
+1. **Install `uv`:**
    ```sh
-    brew install pipx
-    pipx ensurepath
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
 2. **Install the Resume Workflow tool:**
    ```sh
-   pipx install git+https://github.com/oresttokovenko/resume-workflow.git --python 3.11
+   uv tool install git+https://github.com/oresttokovenko/resume-workflow.git
    ```
 
 3. **Run the tool from anywhere on your machine, no virtual environment required:**
@@ -63,20 +62,14 @@ If the `_template` folder is empty or not present, the tool will still function 
 
 ## For Contributors
 
-1. **Create a Virtual Environment and Activate it:**
+1. **Sync dependencies with `uv`:**
    ```sh
-   python3.11 -m venv .venv
-   source .venv/bin/activate
+   uv sync --all-extras
    ```
 
-2. **Install the Tool in Editable Mode:**
+2. **Run the Tool:**
    ```sh
-   pip install --editable '.[dev]'
-   ```
-
-3. **Run the Tool from Within the Virtual Environment:**
-   ```sh
-   resume-workflow -c facebook -j "software engineer"
+   uv run resume-workflow -c facebook -j "software engineer"
    ```
 
 ## Roadmap

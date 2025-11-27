@@ -68,5 +68,6 @@ def create_dir_and_files(company_name: str, job_title: str, use_template: bool =
 
         except FileExistsError:
             logger.info(
-                f"The resume folder for {job_dir.name} already exists with this name in {company_name_dir.name}, please choose a different name"
+                f"The resume folder for {job_dir.name} already exists with this name"
+                "in {company_name_dir.name} , please choose a different name"
             )
