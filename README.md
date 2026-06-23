@@ -1,17 +1,17 @@
-# Resume Workflow CLI
+# tailor
 
-Are you tired of the tedious task of tailoring each resume for every job application? Well you still have to do that, but the Resume Workflow CLI tool is here to help make it easier! This tool automates the creation of folders for each company you apply to and copies over template files (if you have a resume template which you prefer to use), allowing you to save time and stay organized. As a best practice, it creates a `job_description.txt` file within the generated directories but also offers customization capabilities. The `_template` folder can be customized with additional template files to be copied during the resume generation process, since you probably have a base resume that you want to start with. Focus on what matters most - the content of your resume, not copy and pasting.
+Tailoring a resume for every application still takes work, but the file-management part shouldn't. This CLI creates a directory per company, a subdirectory per role, drops in a `job_description.txt`, and copies over whatever template files you keep in `_template`.
 
-Here is an example of basic structure using LaTeX and leveraging the `_template` option
+Here's a Typst example using the `_template` option:
 
 ```
 _template/
 ├── font
 │   └── font.otf
-└── main.tex
+└── main.typ
 ```
 
-A generated directory for a Software Engineer role at Facebook
+Running the tool for a Software Engineer role at Facebook produces:
 
 ```
 Facebook
@@ -19,63 +19,50 @@ Facebook
     ├── font
     │   └── font.otf
     ├── job_description.txt
-    └── main.tex
+    └── main.typ
 ```
 
-## Benefits
-- **Time-Saving:** Automates the creation of directory structures and copying of template files, reducing manual effort.
-- **Consistency:** Ensures a standardized structure and format for each job application, as well as gracefully handles existing directories
-- **Flexibility:** Allows for template customization through the `_template` folder, making it adaptable to different application requirements (Word, LaTeX, Typst, etc)
+## Install
 
-## For Use
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv tool install git+https://github.com/oresttokovenko/tailor.git
+```
 
-1. **Install `uv`:**
-   ```sh
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
+## Usage
 
-2. **Install the Resume Workflow tool:**
-   ```sh
-   uv tool install git+https://github.com/oresttokovenko/resume-workflow.git
-   ```
+```sh
+tailor -c Facebook -j "software engineer"
+```
 
-3. **Run the tool from anywhere on your machine, no virtual environment required:**
-   ```sh
-   resume-workflow -c Facebook -j "software engineer"
-   ```
+The `-t` flag copies `_template/` contents into the new job directory (on by default). Use `-T` to skip it:
 
-### Using the `-t/-T` Flag and the `_template` Folder
+```sh
+tailor -c Facebook -j "software engineer" -t
+tailor -c Facebook -j "software engineer" -T
+```
 
-The `resume_workflow` tool includes an optional `-t/-T` flag to specify whether to use the `_template` folder. If the `_template` folder is present and contains files, those files will be copied over to the new job directory. 
+If `_template` is empty or missing, nothing gets copied. The tool creates the directories and `job_description.txt` either way.
 
-- To use the template folder (default behavior):
-   ```sh
-   resume-workflow -c Facebook -j "software engineer" -t
-   ```
-- To run without using the template folder:
-   ```sh
-   resume-workflow -c Facebook -j "software engineer" -T
-   ```
+## Develop
 
-If the `_template` folder is empty or not present, the tool will still function as expected, creating the necessary directories and files for your resume workflow.
+```sh
+uv sync
+uv run tailor -c facebook -j "software engineer"
+```
 
+Run checks:
 
-## For Contributors
-
-1. **Sync dependencies with `uv`:**
-   ```sh
-   uv sync --all-extras
-   ```
-
-2. **Run the Tool:**
-   ```sh
-   uv run resume-workflow -c facebook -j "software engineer"
-   ```
+```sh
+uv run ruff check .
+uv run pyrefly check
+uv run pytest tests/ -v
+```
 
 ## Roadmap
 
-- Allow users to use different base resumes for various types of job applications by defining multiple template folders 
+- Named template folders so you can keep different base resumes for different kinds of roles:
 
-   ```sh
-   resume-workflow -c Apple -j "platform engineer" -t _infra_engineer
-   ```
+  ```sh
+  tailor -c Apple -j "platform engineer" -t _infra_engineer
+  ```
