@@ -1,5 +1,9 @@
 # tailor
 
+[![CI](https://github.com/oresttokovenko/tailor/actions/workflows/ci.yml/badge.svg)](https://github.com/oresttokovenko/tailor/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.13-blue)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/github/license/oresttokovenko/tailor)](https://github.com/oresttokovenko/tailor/blob/main/LICENSE)
+
 Tailoring a resume for every application still takes work, but the file-management part shouldn't. This CLI creates a directory per company, a subdirectory per role, drops in a `job_description.txt`, and copies over whatever template files you keep in `_template`.
 
 Here's a Typst example using the `_template` option:
